@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>金子大饭店｜Jinzi Grand Restaurant</title>
+  <meta name="description" content="金子作品集｜白描打底｜结构控火｜品牌换做法" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-cn">金子大饭店</div>
+      <div class="brand-en">Jinzi Grand Restaurant</div>
+      <div class="badge">【正在营业中】</div>
+    </div>
+    <nav class="nav">
+      <a href="work.html">MENU 菜单</a>
+      <a href="#contact">订位 / 合作</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <section class="hero-card">
+      <div class="hero-left">
+        <h1>这不是作品集，<br/>是菜单。</h1>
+        <p class="sub">
+          白描打底｜结构控火｜品牌换做法
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="work.html">打开菜单 →</a>
+          <button class="btn ghost" id="playBtn">播放 30s 出菜视频</button>
+        </div>
+
+        <div class="mini">
+          <div class="mini-title">本季推荐</div>
+          <div class="mini-items" id="featured"></div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="poster">
+          <div class="poster-title">MENU</div>
+          <div class="poster-line"></div>
+          <div class="poster-text">
+            前菜｜花纹冷切<br/>
+            饮品｜夏日特调 / 慢乐热饮<br/>
+            主菜｜反差慢炖 / 探案特调 / 穿越融合<br/>
+            甜点｜可颂甜烤 / 假期拼盘<br/>
+            时令｜中式冷焙
+          </div>
+          <div class="poster-foot">Jinzi · Creative Menu</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-title">订位 / 合作</div>
+      <div class="card">
+        <p>把你想点的菜（品牌/目标/档期）发给我：</p>
+        <ul class="contact">
+          <li>微信：<span class="mono">your_wechat</span></li>
+          <li>邮箱：<span class="mono">your@email.com</span></li>
+          <li>小红书：<span class="mono">@金子</span></li>
+        </ul>
+        <p class="hint">（把上面三行改成你的真实信息）</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 30s 视频弹层：把视频链接替换掉 -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" id="closeModal"></div>
+    <div class="modal-content">
+      <div class="modal-top">
+        <div class="modal-title">30s 出菜</div>
+        <button class="iconbtn" id="closeBtn">✕</button>
+      </div>
+      <div class="video-wrap">
+        <!-- 方案A：贴B站/YouTube iframe；方案B：本地 mp4 video -->
+        <video id="video" controls playsinline>
+          <source src="your-30s-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="modal-foot">提示：上传视频后把文件名改成 your-30s-video.mp4 或替换这里的链接。</div>
+    </div>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script>
+    // 首页推荐菜
+    const featured = document.getElementById('featured');
+    const picks = WORKS.filter(w => w.featured).slice(0, 5);
+    featured.innerHTML = picks.map(w => `
+      <a class="chip" href="work.html#${w.id}">
+        <span class="chip-k">${w.no}</span>
+        <span class="chip-t">${w.dish}</span>
+      </a>
+    `).join('');
+
+    // 视频弹层
+    const modal = document.getElementById('modal');
+    const playBtn = document.getElementById('playBtn');
+    const closeModal = document.getElementById('closeModal');
+    const closeBtn = document.getElementById('closeBtn');
+    const video = document.getElementById('video');
+
+    function openModal(){
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+    function close(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      try { video.pause(); } catch(e){}
+    }
+    playBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', close);
+    closeBtn.addEventListener('click', close);
+  </script>
+</body>
+</html>

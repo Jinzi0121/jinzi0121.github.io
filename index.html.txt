@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>菜单 MENU｜金子大饭店</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar compact">
+    <div class="brand">
+      <div class="brand-cn">金子大饭店</div>
+      <div class="brand-en">MENU</div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">返回首页</a>
+    </nav>
+  </header>
+
+  <main class="menu">
+    <section class="menu-grid">
+      <aside class="menu-left">
+        <div class="paper">
+          <div class="paper-title">菜单 MENU</div>
+          <div class="paper-sub">（点击菜名查看详情）</div>
+          <div class="paper-line"></div>
+          <div id="menuList"></div>
+        </div>
+      </aside>
+
+      <section class="menu-right">
+        <div class="section-title">出菜台</div>
+        <div id="cards" class="cards"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="assets/data.js"></script>
+  <script>
+    const groups = [
+      { key:'starter', title:'前菜', en:'Starter' },
+      { key:'drinks', title:'饮品', en:'Drinks' },
+      { key:'mains', title:'主菜', en:'Signature Mains' },
+      { key:'desserts', title:'甜点', en:'Desserts' },
+      { key:'seasonal', title:'时令菜', en:'Seasonal' },
+    ];
+
+    const byCat = (cat) => WORKS.filter(w => w.cat === cat);
+
+    // 左侧菜单清单
+    const menuList = document.getElementById('menuList');
+    menuList.innerHTML = groups.map(g => {
+      const items = byCat(g.key).map(w => `
+        <a class="menu-item" href="#${w.id}">
+          <span class="mi-no">${w.no}</span>
+          <span class="mi-dish">${w.dish}</span>
+          <span class="mi-brand">${w.brand}</span>
+        </a>
+      `).join('');
+      return `
+        <div class="menu-group">
+          <div class="menu-group-title">${g.title}｜${g.en}</div>
+          ${items}
+        </div>
+      `;
+    }).join('');
+
+    // 右侧作品卡片
+    const cards = document.getElementById('cards');
+    cards.innerHTML = WORKS.map(w => `
+      <article class="work-card" id="${w.id}">
+        <div class="work-head">
+          <div class="work-no">${w.no}</div>
+          <div class="work-title">
+            <div class="work-dish">${w.dish}</div>
+            <div class="work-brand">${w.brand}</div>
+          </div>
+        </div>
+
+        <div class="work-body">
+          <div class="work-meta">
+            <span class="tag">${w.catLabel}</span>
+            ${w.tags.map(t => `<span class="tag ghost">${t}</span>`).join('')}
+          </div>
+
+          <div class="work-links">
+            ${w.link ? `<a class="btn small primary" href="${w.link}" target="_blank" rel="noreferrer">看案例</a>` : `<span class="hint">（把链接补到 data.js）</span>`}
+            ${w.video ? `<a class="btn small" href="${w.video}" target="_blank" rel="noreferrer">看视频</a>` : ``}
+          </div>
+
+          <div class="work-note">${w.note}</div>
+        </div>
+      </article>
+    `).join('');
+  </script>
+</body>
+</html>
