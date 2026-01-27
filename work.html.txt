@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>金子大饭店｜这不是作品集，是菜单</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-cn">金子大饭店</div>
+      <div class="brand-en">Jinzi Grand Restaurant</div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">MENU 菜单</a>
+      <a href="#contact">订位合作</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <section class="hero-card">
+      <div class="hero-left">
+        <h1>这不是作品集，<br/>是菜单。</h1>
+        <p style="opacity:0.7">白描打底｜结构控火｜品牌换做法</p>
+        <div style="margin:24px 0">
+          <a class="btn primary" href="index.html">打开菜单 →</a>
+          <button class="btn" id="playBtn">播放出菜视频</button>
+        </div>
+        <div class="mini-title" style="font-size:12px; opacity:0.5; margin-bottom:10px;">本季推荐</div>
+        <div id="featured"></div>
+      </div>
+      <div class="hero-right">
+        <div class="poster">
+          <div style="font-weight:800; margin-bottom:10px;">今日供应</div>
+          <div class="poster-text">
+            前菜｜花纹冷切<br/>
+            饮品｜夏日特调 / 慢乐热饮<br/>
+            主菜｜反差慢炖 / 探案特调<br/>
+            甜点｜可颂甜烤 / 假期拼盘
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:80px; padding:30px; background:rgba(255,255,255,0.03); border-radius:14px;">
+      <div style="opacity:0.6; font-size:12px; margin-bottom:10px;">订位 / 合作</div>
+      <p>微信：your_wechat | 邮箱：your@email.com</p>
+    </section>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <video id="video" controls style="width:100%">
+        <source src="your-video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <script src="assets/data.js"></script>
+  <script>
+    const featured = document.getElementById('featured');
+    featured.innerHTML = WORKS.filter(w => w.featured).map(w => `
+      <a class="chip" href="index.html#${w.id}">
+        <span style="opacity:0.5; margin-right:6px;">${w.no}</span>${w.dish}
+      </a>
+    `).join('');
+
+    const modal = document.getElementById('modal');
+    const video = document.getElementById('video');
+    document.getElementById('playBtn').onclick = () => modal.classList.add('open');
+    function closeModal() { modal.classList.remove('open'); video.pause(); }
+  </script>
+</body>
+</html>

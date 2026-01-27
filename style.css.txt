@@ -1,0 +1,56 @@
+:root{
+  --bg:#0b0b0c;
+  --paper:#f3f1ec;
+  --ink:#121212;
+  --muted:rgba(18,18,18,.65);
+  --line:rgba(18,18,18,.18);
+  --red:#9b2d2d;
+  --card:#121214;
+  --white:rgba(255,255,255,.92);
+}
+
+*{ box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body{
+  margin:0;
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(155,45,45,.12), transparent 60%), var(--bg);
+  color:var(--white);
+  font-family: ui-sans-serif, system-ui, "PingFang SC", sans-serif;
+}
+
+a{ color:inherit; text-decoration:none; }
+.topbar{ display:flex; align-items:center; justify-content:space-between; padding:24px 28px; }
+.brand-cn{ font-size:20px; letter-spacing:.04em; }
+.brand-en{ font-size:12px; opacity:.7; text-transform:uppercase; }
+.nav a{ margin-left:18px; font-size:13px; opacity:.8; }
+
+.hero{ padding: 0 28px 56px; max-width:1100px; margin: 0 auto; }
+.hero-card{ display:grid; grid-template-columns: 1.15fr .85fr; gap:30px; }
+@media (max-width: 900px){ .hero-card{ grid-template-columns:1fr; } }
+
+.btn{ border:1px solid rgba(255,255,255,.18); padding:12px 20px; border-radius:999px; background:transparent; color:var(--white); cursor:pointer; font-size:13px; display:inline-block; }
+.btn.primary{ background:var(--red); border-color:var(--red); }
+.btn.small{ padding:6px 12px; font-size:12px; }
+
+.poster, .paper{ background:var(--paper); color:var(--ink); border-radius:14px; padding:22px; position:relative; box-shadow: 0 18px 45px rgba(0,0,0,.45); border-left: 10px solid var(--red); }
+.poster-text{ font-size:13px; line-height:1.8; color:rgba(18,18,18,.8); }
+
+.menu-grid{ display:grid; grid-template-columns: 350px 1fr; gap:24px; padding:20px; max-width:1200px; margin:0 auto; }
+@media (max-width: 980px){ .menu-grid{ grid-template-columns:1fr; } }
+
+.menu-item{ display:grid; grid-template-columns: 30px 1fr; gap:10px; padding:12px; border-radius:8px; transition: 0.2s; }
+.menu-item:hover{ background: rgba(155,45,45,.08); }
+.mi-no{ font-weight:800; opacity:0.6; }
+.mi-dish{ font-weight:700; }
+.mi-brand{ grid-column: 2; font-size:12px; opacity:0.6; }
+
+.work-card{ background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:20px; margin-bottom:16px; }
+.work-no{ width:36px; height:36px; background:var(--red); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:900; margin-right:15px; }
+.work-head{ display:flex; align-items:center; margin-bottom:15px; }
+.tag{ font-size:11px; padding:4px 8px; border-radius:4px; background:rgba(255,255,255,.1); margin-right:6px; }
+.chip{ display:inline-flex; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06); font-size:12px; margin:4px; border:1px solid rgba(255,255,255,.1); }
+
+.modal{ display:none; position:fixed; inset:0; z-index:100; }
+.modal.open{ display:flex; align-items:center; justify-content:center; }
+.modal-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.8); }
+.modal-content{ position:relative; width:min(800px, 95%); background:#000; border-radius:12px; overflow:hidden; border:1px solid #333; }

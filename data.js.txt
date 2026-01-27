@@ -1,0 +1,124 @@
+const WORKS = [
+  // 前菜
+  {
+    id: "w01",
+    cat: "starter",
+    catLabel: "前菜",
+    no: "01",
+    dish: "花纹冷切",
+    brand: "美团《妈妈爱花，我们爱她》",
+    tags: ["家常白描"],
+    featured: true,
+    link: "", // 在此放入链接
+    video: "",
+    note: "白描、克制、日常细节。"
+  },
+  // 饮品
+  {
+    id: "w02",
+    cat: "drinks",
+    catLabel: "饮品",
+    no: "02",
+    dish: "夏日特调",
+    brand: "茶百道 × 雎晓雯《自然动一夏》",
+    tags: ["品牌气质"],
+    featured: true,
+    link: "",
+    video: "",
+    note: "松弛但有记忆点。"
+  },
+  {
+    id: "w03",
+    cat: "drinks",
+    catLabel: "饮品",
+    no: "03",
+    dish: "慢乐热饮",
+    brand: "小红书《新年慢乐》",
+    tags: ["节奏判断"],
+    featured: true,
+    link: "",
+    video: "",
+    note: "在热闹节点选择降速。"
+  },
+  // 主菜
+  {
+    id: "w04",
+    cat: "mains",
+    catLabel: "主菜",
+    no: "04",
+    dish: "反差慢炖",
+    brand: "李雪琴《史上首个啥都不好使大使》",
+    tags: ["人设主料"],
+    featured: true,
+    link: "",
+    video: "",
+    note: "反差做法，主料是人设。"
+  },
+  {
+    id: "w05",
+    cat: "mains",
+    catLabel: "主菜",
+    no: "05",
+    dish: "探案特调",
+    brand: "京东 × 雷佳音《雷捕头探案记》",
+    tags: ["角色定制"],
+    featured: true,
+    link: "",
+    video: "",
+    note: "顺着角色起锅。"
+  },
+  {
+    id: "w06",
+    cat: "mains",
+    catLabel: "主菜",
+    no: "06",
+    dish: "穿越融合",
+    brand: "美团 × 刘宇《古代点外卖》",
+    tags: ["结构内馅"],
+    featured: true,
+    link: "",
+    video: "",
+    note: "玩梗表皮，结构内馅。"
+  },
+  // 甜点
+  {
+    id: "w07",
+    cat: "desserts",
+    catLabel: "甜点",
+    no: "07",
+    dish: "可颂甜烤",
+    brand: "KFC《每个早起的你都可歌可颂》",
+    tags: ["社交友好"],
+    featured: false,
+    link: "",
+    video: "",
+    note: "轻甜但有劲。"
+  },
+  {
+    id: "w08",
+    cat: "desserts",
+    catLabel: "甜点",
+    no: "08",
+    dish: "假期拼盘",
+    brand: "小红书《快乐加假》",
+    tags: ["可转发"],
+    featured: false,
+    link: "",
+    video: "",
+    note: "截图友好。"
+  },
+  // 时令
+  {
+    id: "w09",
+    cat: "seasonal",
+    catLabel: "时令菜",
+    no: "09",
+    dish: "中式冷焙",
+    brand: "小红书《中国式户外》",
+    tags: ["主厨审美"],
+    featured: true,
+    link: "",
+    video: "",
+    note: "不吵，但很中国。"
+  }
+];

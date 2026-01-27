@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>菜单详情｜金子大饭店</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar compact">
+    <div class="brand"><div class="brand-cn">金子大饭店</div></div>
+    <nav class="nav"><a href="work.html">返回首页</a></nav>
+  </header>
+
+  <main class="menu-grid">
+    <aside>
+      <div class="paper">
+        <div style="font-weight:800; border-bottom:1px solid #ddd; padding-bottom:10px; margin-bottom:10px;">MENU 菜单</div>
+        <div id="menuList"></div>
+      </div>
+    </aside>
+
+    <section id="cards"></section>
+  </main>
+
+  <script src="assets/data.js"></script>
+  <script>
+    const groups = [
+      { key:'starter', title:'前菜' },
+      { key:'drinks', title:'饮品' },
+      { key:'mains', title:'主菜' },
+      { key:'desserts', title:'甜点' },
+      { key:'seasonal', title:'时令菜' }
+    ];
+
+    document.getElementById('menuList').innerHTML = groups.map(g => `
+      <div style="margin-bottom:20px;">
+        <div style="font-size:12px; font-weight:bold; opacity:0.5; margin:10px 0;">${g.title}</div>
+        ${WORKS.filter(w => w.cat === g.key).map(w => `
+          <a class="menu-item" href="#${w.id}">
+            <span class="mi-no">${w.no}</span>
+            <div>
+              <div class="mi-dish">${w.dish}</div>
+              <div class="mi-brand">${w.brand}</div>
+            </div>
+          </a>
+        `).join('')}
+      </div>
+    `).join('');
+
+    document.getElementById('cards').innerHTML = WORKS.map(w => `
+      <article class="work-card" id="${w.id}">
+        <div class="work-head">
+          <div class="work-no">${w.no}</div>
+          <div>
+            <div style="font-size:18px; font-weight:800;">${w.dish}</div>
+            <div style="opacity:0.6; font-size:13px;">${w.brand}</div>
+          </div>
+        </div>
+        <div style="margin:12px 0;">
+          <span class="tag">${w.catLabel}</span>
+          ${w.tags.map(t => `<span class="tag" style="opacity:0.6">${t}</span>`).join('')}
+        </div>
+        <div style="margin:15px 0;">
+          ${w.link ? `<a class="btn small primary" href="${w.link}" target="_blank">看案例</a>` : '<span style="font-size:12px; opacity:0.4;">链接准备中</span>'}
+        </div>
+        <p style="font-size:14px; opacity:0.8; line-height:1.6;">${w.note}</p>
+      </article>
+    `).join('');
+  </script>
+</body>
+</html>
